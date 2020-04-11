@@ -32,12 +32,13 @@
               <div class="card-tools">
                 <!-- <button type="button" class="btn btn-tool" data-card-widget="collapse" data-toggle="tooltip" title="Collapse">
                   <i class="fas fa-minus"></i></button> -->
+                  <a href="#" type="button" class="btn btn-default float-right tombolTambahDataFgs" 
+              data-toggle="modal" data-target="#modal-default">Add Item</a>
              </div>
             </div>
           <div class="card-body"> 
             <div>
-              <a href="#" type="button" class="btn btn-default float-right tombolTambahDataFgs" 
-              data-toggle="modal" data-target="#modal-default">Add Item</a>
+              
             </div> 
               <table id="example1" class="table table-bordered table-striped">
                 <thead>

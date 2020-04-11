@@ -28,11 +28,12 @@
           <div class="card">
             <div class="card-header">
               <h3 class="card-title">{{$plant}} Moving Average Cost</h3>
+              <a href="#" type="button" class="btn btn-default float-right tombolTambahDataMacs" 
+              data-toggle="modal" data-target="#modal-default">Add Item</a>
             </div>
           <div class="card-body"> 
             <div>
-              <a href="#" type="button" class="btn btn-default float-right tombolTambahDataMacs" 
-              data-toggle="modal" data-target="#modal-default">Add Item</a>
+              
             </div> 
               <table id="example1" class="table table-bordered table-striped">
                 <thead>

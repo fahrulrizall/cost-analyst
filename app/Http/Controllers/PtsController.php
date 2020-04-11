@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Pt;
 use App\fg;
 use App\Mac;
+use App\Packaging;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -84,7 +85,7 @@ class PtsController extends Controller
         echo json_encode($output);
     }
 
-    public function update(Request $request,Pt $pt)
+    public function update(Request $request,Pt $pt,Packaging $packaging)
     {    
         $request->validate([
             'lbs' => 'required',
@@ -97,8 +98,15 @@ class PtsController extends Controller
                 
         if ($calculate > 0){
             $mac = $calculate/(count($request->all())-3);
-            $packaging = 0.30;
-            $ofc = 0.21;
+
+            $totalpackaging = DB::table('packagings')->where('plant',$pt->plant)->latest()->take(3)->get()->sum('packaging');
+            $total = DB::table('packagings')->where('plant',$pt->plant)->latest()->take(3)->get()->sum('total');
+            $totallbs = DB::table('packagings')->where('plant',$pt->plant)->latest()->take(3)->get()->sum('lbs');
+            $packaging = $totalpackaging/$totallbs;
+            $ofc =  $total/$totallbs;
+
+            // $packaging = 0.30;
+            // $ofc = 0.21;
             $yield = 0.95;
             
             $data = DB::table('pts')

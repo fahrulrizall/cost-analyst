@@ -32,12 +32,13 @@
               <div class="card-tools">
                 <!-- <button type="button" class="btn btn-tool" data-card-widget="collapse" data-toggle="tooltip" title="Collapse">
                   <i class="fas fa-minus"></i></button> -->
+                  <a href="#" type="button" class="btn btn-default float-right tombolTambahDataPackagings" 
+              data-toggle="modal" data-target="#modal-default">Add Item</a>
              </div>
             </div>
           <div class="card-body"> 
             <div>
-              <a href="#" type="button" class="btn btn-default float-right tombolTambahDataPackagings" 
-              data-toggle="modal" data-target="#modal-default">Add Item</a>
+              
             </div> 
               <table id="example1" class="table table-bordered table-striped">
                 <thead>
@@ -58,6 +59,9 @@
                       Packaging
                     </th>
                     <th style="width: 10%">
+                      LBS
+                    </th>
+                    <th style="width: 10%">
                       Other
                     </th>
                     <th style="width: 14%">
@@ -73,13 +77,14 @@
                   <td>{{$packaging->ofc}}</td>
                   <td>{{$packaging->expenses}}</td>
                   <td>{{$packaging->packaging}}</td>
+                  <td>{{$packaging->lbs}}</td>
                   <td>{{$packaging->other}}</td>
                   <td>
                     <form action="/packagings/{{$packaging->id}}" method="post" class="d-inline">
                         @method('delete')
                         @csrf
-                    <a href="/packagings/delete" class="btn btn-primary tampilModalUbahFgs" 
-                      data-toggle="modal" data-target="#modal-default" data-id="" >Edit</a>
+                    <a href="" class="btn btn-primary tampilModalUbahPackaging" 
+                      data-toggle="modal" data-target="#modal-default" data-id="{{$packaging->id}}" >Edit</a>
                     <button type="submit" class="btn btn-danger">Hapus</button>
                     </form>
                   </td>
@@ -153,6 +158,14 @@
                 <input type="number" class="form-control @error('packaging') is-invalid @enderror" id="packaging" 
                 name="packaging" placeholder="Packaging" value="{{old('packaging')}}" required>
                 @error('packaging')
+                    <div class="invalid-feedback">{{$message }}</div>
+                @enderror
+            </div>
+            <div class="form-group">
+                <label for="lbs">LBS</label>
+                <input type="number" class="form-control @error('lbs') is-invalid @enderror" id="lbs" 
+                name="lbs" placeholder="Packaging" value="{{old('lbs')}}" required>
+                @error('lbs')
                     <div class="invalid-feedback">{{$message }}</div>
                 @enderror
             </div>

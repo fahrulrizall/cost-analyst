@@ -92,28 +92,32 @@ $(function(){
         $('#formModalLabel').html('Add New Item');
         $('.modal-footer button[type=submit]').html('Add');
         $('.modal-body form').attr('action','/packagings');
-        $('#sap_code').val("");
-        $('#material_desc').val("");
-        $('#price_lbs').val("");
+        $('#month').val("");
+        $('#lab').val("");
+        $('#ofc').val("");
+        $('#expenses').val("");
+        $('#packaging').val("");
         $('#lbs').val("");
-        $('#std_price').val("");
-        $('#processing_fee').val("");
+        $('#other').val("");
     });
-    $('.tampilModalUbahMacs').on('click',function () {
+    $('.tampilModalUbahPackaging').on('click',function () {
         $('#formModalLabel').html('Update Item');
         $('.modal-footer button[type=submit]').html('Update');
         var id = $(this).data('id');
-        $('.modal-body form').attr('action','/macs/'+id+'/update');
+        $('.modal-body form').attr('action','/packagings/'+id+'/update');
         $.ajax({
-            url: '/macs/getubah',
+            url: '/packagings/getubah',
             data: {id : id},
             method:'get',
             dataType : 'json',
             success: function (data) {
-                $('#sap_code').val(data.sap_code);
-                $('#material_desc').val(data.material_desc);
-                $('#plant').val(data.plant);
-                $('#mac').val(data.mac);
+                $('#month').val(data.month);
+                $('#lab').val(data.lab);
+                $('#ofc').val(data.ofc);
+                $('#expenses').val(data.expenses);
+                $('#packaging').val(data.packaging);
+                $('#lbs').val(data.lbs);
+                $('#other').val(data.other);
             }
         });
     });

@@ -45,10 +45,11 @@ Route::post('/pts/{id}/update','PtsController@update');//update lbs dan loin
 Route::get('/ptspt/getubah','PtsController@getubah');//get data for jquery
 
 // untuk packagings
+Route::get('/packagings/getubah','PackagingsController@getubah');
 Route::get('/packagings/{plantpackagings}','PackagingsController@index');//halaman awal
 Route::post('/packagings','PackagingsController@store');//halaman awal
 Route::delete('/packagings/{packaging}','PackagingsController@destroy');//halaman awal
-
+Route::post('/packagings/{packaging}/update','PackagingsController@update');
 
 
 
