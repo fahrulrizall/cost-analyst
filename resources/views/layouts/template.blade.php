@@ -50,7 +50,7 @@
               <ul class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
                 <!-- User image -->
                 <li class="user-header bg-gradient-primary">
-                  <img src="/adminlte/dist/img/user2-160x160.jpg" class="img-circle elevation-2" alt="User Image">
+                  <img src="/adminlte/dist/img/users/{{ Auth::user()->avatar }}" class="img-circle elevation-2" alt="User Image">
                   <p>
                   <div style="text-transform:capitalize"> {{ Auth::user()->name }}</div> 
                     <small style="text-transform:capitalize">{{ Auth::user()->departement}} - {{ Auth::user()->position}}</small>
@@ -72,7 +72,7 @@
                 </li> -->
                 <!-- Menu Footer-->
                 <li class="user-footer">
-                  <a href="#" class="btn btn-default btn-flat">Profile</a>
+                  <a href="/profile/{{Auth::user()->name}}" class="btn btn-default btn-flat">Profile</a>
                   <a class="btn btn-default btn-flat float-right" href="{{ route('logout') }}"
                       onclick="event.preventDefault();
                             document.getElementById('logout-form').submit();">
@@ -525,6 +525,9 @@
   <!-- /.control-sidebar -->
 </div>
 
+
+
+</script>
 <!-- Toastr -->
 <script src="/adminlte/plugins/toastr/toastr.min.js"></script>
 <!-- jQuery -->
@@ -537,20 +540,10 @@
 <script src="/adminlte/dist/js/demo.js"></script>
 <script src="/js/script.js"></script>
 
-<!-- <script src="/adminlte/plugins/datatables/jquery.dataTables.js"></script>
+
+<script src="/adminlte/plugins/datatables/jquery.dataTables.js"></script>
 <script src="/adminlte/plugins/datatables-bs4/js/dataTables.bootstrap4.js"></script>
-<script>
-  $(function () {
-    $("#example1").DataTable();
-    $('#example2').DataTable({
-      "paging": true,
-      "lengthChange": true,
-      "searching": false,
-      "ordering": true,
-      "info": true,
-      "autoWidth": true,
-    });
-  });
-</script> -->
+<script src="/adminlte/plugins/bs-custom-file-input/bs-custom-file-input.min.js"></script>
+
 </body>
 </html>

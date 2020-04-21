@@ -65,6 +65,7 @@ $(function(){
         });
     });
 
+
     //untuk pts
     $('.tampilModalUbahPts').on('click',function () {
         var id = $(this).data('id');
@@ -83,9 +84,6 @@ $(function(){
     $("#pt_name, #plant").on("keyup", function(){
         $("#validatept").val($("#pt_name").val() + $("#plant").val());
     });
-
-
-
 
     //untuk packagings
     $('.tombolTambahDataPackagings').on('click',function () {
@@ -122,5 +120,42 @@ $(function(){
         });
     });
 
+    $('.formProfile').on('click',function () {
+        $('#formModalLabel').html('Update Item');
+        $('.modal-footer button[type=submit]').html('Update');
+        var id = $(this).data('id');
+        $('.modal-body form').attr('action','/profile/'+id+'/update');
+        $.ajax({
+            url: '/profileuser/getuser',
+            data: {id : id},
+            method:'get',
+            dataType : 'json',
+            success: function (data) {
+                $('#name').val(data.name);
+                $('#email').val(data.email);
+                $('#departement').val(data.departement);
+                $('#position').val(data.position);
+                $('#education').val(data.education);
+                $('#address').val(data.address);
+                $('#avatar').val(data.avatar);
+            }
+        });
+    });
+
+    $(function () {
+        $("#example1").DataTable();
+        $('#example2').DataTable({
+          "paging": true,
+          "lengthChange": true,
+          "searching": false,
+          "ordering": true,
+          "info": true,
+          "autoWidth": true,
+        });
+      });
+
+      $(document).ready(function () {
+        bsCustomFileInput.init();
+      });
 
 });

@@ -9,6 +9,11 @@ use Illuminate\Support\Facades\DB;
 
 class PackagingsController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
     public function index(Packaging $plant){
 
         $packaging = DB::table('packagings')->where('plant',$plant->plant)->orderBy('id','desc')->get();

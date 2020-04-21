@@ -51,6 +51,11 @@ Route::post('/packagings','PackagingsController@store');//halaman awal
 Route::delete('/packagings/{packaging}','PackagingsController@destroy');//halaman awal
 Route::post('/packagings/{packaging}/update','PackagingsController@update');
 
+// untuk profile
+Route::get('/profile/{user}','UsersController@index');
+Route::get('/profileuser/getuser','UsersController@getuser');
+Route::post('/profile/{user}/update','UsersController@update');
+
 
 
 Auth::routes();
