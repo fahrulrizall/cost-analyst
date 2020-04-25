@@ -8,6 +8,11 @@ use Illuminate\Support\Facades\DB;
 
 class MacsController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware(['auth','CheckRole:admin']);
+    }
+
     public function index(Mac $plant){
         $macs = DB::table('macs')->where('plant',$plant->plant)->orderBy('id','desc')->get();
         $plant = $plant->plant;

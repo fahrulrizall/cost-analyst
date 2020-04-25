@@ -56,8 +56,6 @@ Route::get('/profile/{user}','UsersController@index');
 Route::get('/profileuser/getuser','UsersController@getuser');
 Route::post('/profile/{user}/update','UsersController@update');
 
-
-
 Auth::routes();
 
 //Route::get('/home', 'HomeController@index')->name('home');
