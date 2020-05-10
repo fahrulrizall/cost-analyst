@@ -77,10 +77,14 @@ $(function(){
             dataType : 'json',
             success: function (data) {
                 $('#lbs').val(data.lbs);
-                $('#loin').val(data.loin);
+                $('.loincode').each(function( index ) {
+                    $(this).attr("checked",(data.loin && data.loin.filter(x=>(x==$(this).val())).length) ? true : false);
+                });
             }
         });
     });
+    
+
     $("#pt_name, #plant").on("keyup", function(){
         $("#validatept").val($("#pt_name").val() + $("#plant").val());
     });
@@ -146,11 +150,11 @@ $(function(){
         $("#example1").DataTable();
         $('#example2').DataTable({
           "paging": true,
-          "lengthChange": true,
+          "lengthChange": false,
           "searching": false,
           "ordering": true,
           "info": true,
-          "autoWidth": true,
+          "autoWidth": false,
         });
       });
 

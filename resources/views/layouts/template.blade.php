@@ -526,24 +526,21 @@
 </div>
 
 
-
-</script>
 <!-- Toastr -->
 <script src="/adminlte/plugins/toastr/toastr.min.js"></script>
 <!-- jQuery -->
 <script src="/adminlte/plugins/jquery/jquery.min.js"></script>
 <!-- Bootstrap 4 -->
 <script src="/adminlte/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+<script src="/adminlte/plugins/datatables/jquery.dataTables.js"></script>
+<script src="/adminlte/plugins/datatables-bs4/js/dataTables.bootstrap4.js"></script>
+<script src="/adminlte/plugins/bs-custom-file-input/bs-custom-file-input.min.js"></script>
 <!-- AdminLTE App -->
 <script src="/adminlte/dist/js/adminlte.min.js"></script>
 <!-- AdminLTE for demo purposes -->
 <script src="/adminlte/dist/js/demo.js"></script>
 <script src="/js/script.js"></script>
-
-
-<script src="/adminlte/plugins/datatables/jquery.dataTables.js"></script>
-<script src="/adminlte/plugins/datatables-bs4/js/dataTables.bootstrap4.js"></script>
-<script src="/adminlte/plugins/bs-custom-file-input/bs-custom-file-input.min.js"></script>
 
 </body>
 </html>

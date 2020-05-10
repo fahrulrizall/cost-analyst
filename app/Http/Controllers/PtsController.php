@@ -57,8 +57,6 @@ class PtsController extends Controller
         return redirect('/pts/'.$pt->plant)->with('status','Productions Target Deleted');
     }
 
-
-    // bagian item/PTs
     public function add(Request $request)
     {
         $request->validate([
@@ -80,35 +78,29 @@ class PtsController extends Controller
         $pt = Pt::find($id);
         $output = array(
             'lbs' => $pt->lbs,
-            'loin' => $pt->loin
+            'loin' => explode(",",$pt->loin)
         );
         echo json_encode($output);
     }
 
     public function update(Request $request,Pt $pt,Packaging $packaging)
-    {    
+    {   
         $request->validate([
             'lbs' => 'required',
         ]);
-        
-        $calculate = ($request->a108591+$request->a108592+$request->a108593
-                +$request->a107290+$request->a107289+$request->a107288+$request->a107287
-                +$request->a107294+$request->a107293+$request->a107292
-                +$request->a107992+$request->a107993+$request->a107994);
                 
-        if ($calculate > 0){
-            $mac = $calculate/(count($request->all())-3);
-
+        if ($request->sap_code > 0){
+            $summac = DB::table('macs')->whereIn('sap_code',$request->sap_code)->get()->sum('mac');
+            $mac = $summac/count($request->sap_code);
+            $loin = implode(",",$request->sap_code);
             $totalpackaging = DB::table('packagings')->where('plant',$pt->plant)->latest()->take(3)->get()->sum('packaging');
             $total = DB::table('packagings')->where('plant',$pt->plant)->latest()->take(3)->get()->sum('total');
             $totallbs = DB::table('packagings')->where('plant',$pt->plant)->latest()->take(3)->get()->sum('lbs');
             $packaging = $totalpackaging/$totallbs;
             $ofc =  $total/$totallbs;
 
-            // $packaging = 0.30;
-            // $ofc = 0.21;
             $yield = 0.95;
-            
+
             $data = DB::table('pts')
             ->select(DB::raw('(price_lbs*'.$request->lbs.')-((('.$mac.'/'.$yield.')+processing_fee+'.$ofc.'+'.$packaging.')*'.$request->lbs.') as result'))
             ->where('id', '=', $pt->id)
@@ -116,6 +108,7 @@ class PtsController extends Controller
 
             Pt::where('id',$pt->id)->update([
                     'lbs' => $request->lbs,
+                    'loin' => $loin,
                     'mac' => $mac,
                     'result' => $data->result
             ]);

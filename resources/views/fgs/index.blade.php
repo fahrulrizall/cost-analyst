@@ -26,20 +26,17 @@
     <section class="content">
       <div class="row">
         <div class="col-12">
+
           <div class="card">
-            <div class="card-header">
-              <h3 class="card-title">Finish Good List</h3>
-              <div class="card-tools">
-                <!-- <button type="button" class="btn btn-tool" data-card-widget="collapse" data-toggle="tooltip" title="Collapse">
-                  <i class="fas fa-minus"></i></button> -->
-                  <a href="#" type="button" class="btn btn-default float-right tombolTambahDataFgs" 
-              data-toggle="modal" data-target="#modal-default">Add Item</a>
-             </div>
-            </div>
-          <div class="card-body"> 
-            <div>
-              
-            </div> 
+              <div class="card-header">
+                <h3 class="card-title">Finish Good List</h3>
+                <div class="card-tools">
+                    <a href="#" type="button" class="btn btn-default float-right tombolTambahDataFgs" 
+                data-toggle="modal" data-target="#modal-default">Add Item</a>
+              </div>
+              </div>
+
+          <div class="card-body">
               <table id="example1" class="table table-bordered table-striped">
                 <thead>
                 <tr>
@@ -188,9 +185,6 @@
     </div>
     <!-- /.modal-content -->
 </div>
-
-
-
 @endsection
 
 

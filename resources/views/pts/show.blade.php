@@ -205,8 +205,9 @@
                 <label for="loin">Raw Material</label>
                 @foreach ($loin as $loin)
                 <div class="custom-control custom-checkbox">
-                  <input class="custom-control-input" type="checkbox" id="{{$loin->sap_code}}" name="a{{$loin->sap_code}}" value="{{$loin->mac}}">
-                  <label for="{{$loin->sap_code}}" class="custom-control-label">{{$loin->material_desc}}</label>
+                  <input class="custom-control-input loincode" type="checkbox" id="{{$loin->sap_code}}" name="sap_code[]" 
+                  value="{{$loin->sap_code}}">
+                  <label for="{{$loin->sap_code}}" class="custom-control-label">{{$loin->sap_code}}</label>
                 </div>
                 @endforeach
             </div>
